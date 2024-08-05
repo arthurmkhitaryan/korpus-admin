@@ -6,20 +6,21 @@
   },
   "options": {},
   "attributes": {
-    "question_one": {
+    "questions": {
       "type": "component",
       "repeatable": true,
       "component": "question.question"
     },
-    "about_question_image": {
+    "about_questions_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

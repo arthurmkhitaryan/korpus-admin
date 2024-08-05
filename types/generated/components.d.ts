@@ -58,6 +58,18 @@ export interface PositionTotalSize extends Schema.Component {
   };
 }
 
+export interface LearnMoreBlockLearnMore extends Schema.Component {
+  collectionName: 'components_learn_more_block_learn_mores';
+  info: {
+    displayName: 'Learn-More';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+  };
+}
+
 export interface FacadePreferencesFacadePreferences extends Schema.Component {
   collectionName: 'components_facade_preferences_facade_preferences';
   info: {
@@ -87,22 +99,10 @@ export interface AboutQuestionsAboutQuestions extends Schema.Component {
     description: '';
   };
   attributes: {
-    question_one: Attribute.Component<'question.question', true>;
-    about_question_image: Attribute.Media<
+    questions: Attribute.Component<'question.question', true>;
+    about_questions_image: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-  };
-}
-
-export interface LearnMoreBlockLearnMore extends Schema.Component {
-  collectionName: 'components_learn_more_block_learn_mores';
-  info: {
-    displayName: 'Learn-More';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
-    image: Attribute.Media<'images'> & Attribute.Required;
   };
 }
 
@@ -150,9 +150,9 @@ declare module '@strapi/types' {
       'question.question': QuestionQuestion;
       'preferences.preferences': PreferencesPreferences;
       'position.total-size': PositionTotalSize;
+      'learn-more-block.learn-more': LearnMoreBlockLearnMore;
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
       'about-questions.about-questions': AboutQuestionsAboutQuestions;
-      'learn-more-block.learn-more': LearnMoreBlockLearnMore;
       'about-info.info-block': AboutInfoInfoBlock;
     }
   }
