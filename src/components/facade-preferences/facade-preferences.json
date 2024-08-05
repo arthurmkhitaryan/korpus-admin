@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_facade_preferences_facade_preferences",
+  "info": {
+    "displayName": "FacadePreferences"
+  },
+  "options": {},
+  "attributes": {
+    "facade": {
+      "type": "enumeration",
+      "enum": [
+        "With",
+        "Without"
+      ],
+      "default": "With",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Smooth",
+        "Framework",
+        "Milled",
+        "Glass",
+        "Other"
+      ],
+      "default": "Smooth",
+      "required": true
+    },
+    "facadeType": {
+      "type": "enumeration",
+      "enum": [
+        "Lam. Chipboard",
+        "Lam. MDF",
+        "MDF coloring",
+        "MDF veneer",
+        "MDF HPL"
+      ],
+      "default": "Lam. Chipboard",
+      "required": true
+    }
+  }
+}

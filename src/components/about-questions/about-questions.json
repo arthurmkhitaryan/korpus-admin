@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_about_questions_about_questions",
+  "info": {
+    "displayName": "About-Questions",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "question_one": {
+      "type": "component",
+      "repeatable": true,
+      "component": "question.question"
+    },
+    "about_question_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

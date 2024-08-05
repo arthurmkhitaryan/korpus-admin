@@ -1,0 +1,58 @@
+{
+  "collectionName": "components_info_info_blocks",
+  "info": {
+    "displayName": "InfoBlock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "firstContent": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5video.CKEditor5Video",
+      "required": true
+    },
+    "firstImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "secondaryContent": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "required": true,
+      "customField": "plugin::ckeditor5video.CKEditor5Video"
+    },
+    "secondaryImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "lastContent": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5video.CKEditor5Video",
+      "required": true
+    },
+    "lastImage": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

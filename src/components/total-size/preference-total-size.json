@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_total_size_preference_total_sizes",
+  "info": {
+    "displayName": "PreferenceTotalSize"
+  },
+  "options": {},
+  "attributes": {
+    "size": {
+      "type": "string",
+      "default": "70*60",
+      "required": true
+    },
+    "depth": {
+      "type": "string",
+      "default": "540 (Fixed)",
+      "required": true
+    }
+  }
+}

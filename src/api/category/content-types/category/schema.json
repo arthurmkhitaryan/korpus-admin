@@ -26,12 +26,6 @@
       "required": true,
       "unique": true
     },
-    "sub_categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::sub-category.sub-category",
-      "mappedBy": "categories"
-    },
     "type": {
       "pluginOptions": {
         "i18n": {
@@ -41,12 +35,6 @@
       "type": "string",
       "required": true,
       "unique": true
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::project.project",
-      "mappedBy": "category"
     },
     "img": {
       "type": "media",
@@ -60,6 +48,18 @@
           "localized": true
         }
       }
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sub-category.sub-category",
+      "mappedBy": "category"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "categories"
     }
   }
 }

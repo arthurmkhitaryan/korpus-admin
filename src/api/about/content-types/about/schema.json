@@ -1,0 +1,52 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "about_info_block": {
+      "displayName": "InfoBlock",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "about-info.info-block"
+    },
+    "about_questions": {
+      "displayName": "About-Questions",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "about-questions.about-questions"
+    },
+    "learn_more_block": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "learn-more-block.learn-more"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_total_size_total_sizes",
+  "info": {
+    "displayName": "PreferencePosition",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "totalHeight": {
+      "type": "integer",
+      "required": false
+    },
+    "depth": {
+      "type": "string",
+      "required": true,
+      "default": "540 (Fixed)"
+    },
+    "tableCloth": {
+      "type": "enumeration",
+      "enum": [
+        "s-12",
+        "s-28",
+        "s-38"
+      ],
+      "default": "s-28",
+      "required": true
+    },
+    "support": {
+      "type": "enumeration",
+      "enum": [
+        "s-60",
+        "s-100",
+        "s-120"
+      ],
+      "default": "s-100",
+      "required": true
+    }
+  }
+}

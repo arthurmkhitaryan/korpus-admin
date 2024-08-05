@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "preferences",
+  "info": {
+    "singularName": "preference",
+    "pluralName": "preferences",
+    "displayName": "Preferences",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sub_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sub-category.sub-category"
+    },
+    "params": {
+      "type": "component",
+      "repeatable": false,
+      "component": "preferences.preferences",
+      "required": true
+    }
+  }
+}

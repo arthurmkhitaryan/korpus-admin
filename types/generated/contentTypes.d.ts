@@ -788,6 +788,65 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutAbout extends Schema.SingleType {
+  collectionName: 'abouts';
+  info: {
+    singularName: 'about';
+    pluralName: 'abouts';
+    displayName: 'About';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    about_info_block: Attribute.Component<'about-info.info-block'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    about_questions: Attribute.Component<'about-questions.about-questions'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    learn_more_block: Attribute.Component<'learn-more-block.learn-more', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about.about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about.about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::about.about',
+      'oneToMany',
+      'api::about.about'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -813,11 +872,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    sub_categories: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::sub-category.sub-category'
-    >;
     type: Attribute.String &
       Attribute.Required &
       Attribute.Unique &
@@ -826,11 +880,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    projects: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::project.project'
-    >;
     img: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -838,6 +887,16 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    sub_categories: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::sub-category.sub-category'
+    >;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -859,6 +918,75 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::category.category'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiColorColor extends Schema.CollectionType {
+  collectionName: 'colors';
+  info: {
+    singularName: 'color';
+    pluralName: 'colors';
+    displayName: 'KorpusColor';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    hex: Attribute.String & Attribute.Required & Attribute.Unique;
+    colorCategory: Attribute.String & Attribute.Required;
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::color.color',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::color.color',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPreferencePreference extends Schema.CollectionType {
+  collectionName: 'preferences';
+  info: {
+    singularName: 'preference';
+    pluralName: 'preferences';
+    displayName: 'Preferences';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    sub_category: Attribute.Relation<
+      'api::preference.preference',
+      'oneToOne',
+      'api::sub-category.sub-category'
+    >;
+    params: Attribute.Component<'preferences.preferences'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::preference.preference',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::preference.preference',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -885,16 +1013,45 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    description: Attribute.Text &
+    price: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    price: Attribute.Integer &
+    categories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::category.category'
+    >;
+    sub_categories: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::sub-category.sub-category'
+    >;
+    korpus_color: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'api::color.color'
+    >;
+    preferences: Attribute.Component<'preferences.preferences'> &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    facade: Attribute.Component<'facade-preferences.facade-preferences'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -927,6 +1084,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     singularName: 'project';
     pluralName: 'projects';
     displayName: 'Project';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -935,8 +1093,18 @@ export interface ApiProjectProject extends Schema.CollectionType {
     name: Attribute.String;
     category: Attribute.Relation<
       'api::project.project',
-      'manyToOne',
+      'oneToOne',
       'api::category.category'
+    >;
+    sub_category_parts: Attribute.Relation<
+      'api::project.project',
+      'oneToMany',
+      'api::sub-category.sub-category'
+    >;
+    korpus_color: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'api::color.color'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -962,6 +1130,7 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
     singularName: 'sub-category';
     pluralName: 'sub-categories';
     displayName: 'SubCategory';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -985,9 +1154,20 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    categories: Attribute.Relation<
+    type: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    project: Attribute.Relation<
       'api::sub-category.sub-category',
-      'manyToMany',
+      'manyToOne',
+      'api::project.project'
+    >;
+    category: Attribute.Relation<
+      'api::sub-category.sub-category',
+      'manyToOne',
       'api::category.category'
     >;
     createdAt: Attribute.DateTime;
@@ -1032,7 +1212,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::about.about': ApiAboutAbout;
       'api::category.category': ApiCategoryCategory;
+      'api::color.color': ApiColorColor;
+      'api::preference.preference': ApiPreferencePreference;
       'api::product.product': ApiProductProduct;
       'api::project.project': ApiProjectProject;
       'api::sub-category.sub-category': ApiSubCategorySubCategory;
