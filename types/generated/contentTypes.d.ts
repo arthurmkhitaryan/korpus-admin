@@ -971,7 +971,6 @@ export interface ApiPreferencePreference extends Schema.CollectionType {
       'oneToOne',
       'api::sub-category.sub-category'
     >;
-    params: Attribute.Component<'preferences.preferences'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1034,13 +1033,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'oneToOne',
       'api::color.color'
     >;
-    preferences: Attribute.Component<'preferences.preferences'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     facade: Attribute.Component<'facade-preferences.facade-preferences'> &
       Attribute.SetPluginOptions<{
         i18n: {

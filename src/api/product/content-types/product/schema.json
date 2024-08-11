@@ -48,17 +48,6 @@
       "relation": "oneToOne",
       "target": "api::color.color"
     },
-    "preferences": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "preferences.preferences",
-      "required": true
-    },
     "facade": {
       "type": "component",
       "repeatable": false,

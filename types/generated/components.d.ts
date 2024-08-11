@@ -1,18 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface TotalSizePreferenceTotalSize extends Schema.Component {
-  collectionName: 'components_total_size_preference_total_sizes';
-  info: {
-    displayName: 'PreferenceTotalSize';
-  };
-  attributes: {
-    size: Attribute.String & Attribute.Required & Attribute.DefaultTo<'70*60'>;
-    depth: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<'540 (Fixed)'>;
-  };
-}
-
 export interface QuestionQuestion extends Schema.Component {
   collectionName: 'components_question_questions';
   info: {
@@ -22,39 +9,6 @@ export interface QuestionQuestion extends Schema.Component {
   attributes: {
     question: Attribute.String;
     answer: Attribute.String;
-  };
-}
-
-export interface PreferencesPreferences extends Schema.Component {
-  collectionName: 'components_preferences_preferences';
-  info: {
-    displayName: 'Preferences';
-  };
-  attributes: {
-    type: Attribute.Enumeration<['With handle', 'Without Handle', 'Gola']> &
-      Attribute.Required;
-    totalSize: Attribute.Component<'total-size.preference-total-size'>;
-    position: Attribute.Component<'position.total-size'>;
-  };
-}
-
-export interface PositionTotalSize extends Schema.Component {
-  collectionName: 'components_total_size_total_sizes';
-  info: {
-    displayName: 'PreferencePosition';
-    description: '';
-  };
-  attributes: {
-    totalHeight: Attribute.Integer;
-    depth: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<'540 (Fixed)'>;
-    tableCloth: Attribute.Enumeration<['s-12', 's-28', 's-38']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'s-28'>;
-    support: Attribute.Enumeration<['s-60', 's-100', 's-120']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'s-100'>;
   };
 }
 
@@ -146,10 +100,7 @@ export interface AboutInfoInfoBlock extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'total-size.preference-total-size': TotalSizePreferenceTotalSize;
       'question.question': QuestionQuestion;
-      'preferences.preferences': PreferencesPreferences;
-      'position.total-size': PositionTotalSize;
       'learn-more-block.learn-more': LearnMoreBlockLearnMore;
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
       'about-questions.about-questions': AboutQuestionsAboutQuestions;
