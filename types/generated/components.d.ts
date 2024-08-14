@@ -12,6 +12,37 @@ export interface QuestionQuestion extends Schema.Component {
   };
 }
 
+export interface PreferenceItemParamsPreferenceItemParams
+  extends Schema.Component {
+  collectionName: 'components_preference_item_params_preference_item_params';
+  info: {
+    displayName: 'PreferenceItemParams';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    IsSelectable: Attribute.Boolean & Attribute.Required;
+    isFixed: Attribute.Boolean & Attribute.Required;
+    value: Attribute.String & Attribute.Required;
+    default: Attribute.String;
+  };
+}
+
+export interface PreferenceItemPreferenceItem extends Schema.Component {
+  collectionName: 'components_preference_item_preference_items';
+  info: {
+    displayName: 'PreferenceItem';
+  };
+  attributes: {
+    name: Attribute.String;
+    type: Attribute.String;
+    items: Attribute.Component<
+      'preference-item-params.preference-item-params',
+      true
+    >;
+  };
+}
+
 export interface LearnMoreBlockLearnMore extends Schema.Component {
   collectionName: 'components_learn_more_block_learn_mores';
   info: {
@@ -101,6 +132,8 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'question.question': QuestionQuestion;
+      'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
+      'preference-item.preference-item': PreferenceItemPreferenceItem;
       'learn-more-block.learn-more': LearnMoreBlockLearnMore;
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
       'about-questions.about-questions': AboutQuestionsAboutQuestions;

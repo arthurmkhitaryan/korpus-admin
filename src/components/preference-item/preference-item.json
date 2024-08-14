@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_preference_item_preference_items",
+  "info": {
+    "displayName": "PreferenceItem"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "items": {
+      "displayName": "PreferenceItemParams",
+      "type": "component",
+      "repeatable": true,
+      "component": "preference-item-params.preference-item-params"
+    }
+  }
+}

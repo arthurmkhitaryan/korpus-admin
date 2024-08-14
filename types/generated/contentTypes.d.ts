@@ -971,6 +971,11 @@ export interface ApiPreferencePreference extends Schema.CollectionType {
       'oneToOne',
       'api::sub-category.sub-category'
     >;
+    preferenceItems: Attribute.Component<
+      'preference-item.preference-item',
+      true
+    >;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

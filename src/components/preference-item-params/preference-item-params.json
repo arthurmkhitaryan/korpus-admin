@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_preference_item_params_preference_item_params",
+  "info": {
+    "displayName": "PreferenceItemParams",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "IsSelectable": {
+      "type": "boolean",
+      "required": true
+    },
+    "isFixed": {
+      "type": "boolean",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "default": {
+      "type": "string",
+      "required": false
+    }
+  }
+}
