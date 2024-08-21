@@ -1,14 +1,15 @@
 {
   "collectionName": "components_preference_item_preference_items",
   "info": {
-    "displayName": "PreferenceItem"
+    "displayName": "PreferenceItem",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "name": {
       "type": "string"
     },
-    "type": {
+    "default": {
       "type": "string"
     },
     "items": {
@@ -16,6 +17,29 @@
       "type": "component",
       "repeatable": true,
       "component": "preference-item-params.preference-item-params"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "editable": {
+      "type": "boolean"
+    },
+    "isFixed": {
+      "type": "boolean"
+    },
+    "selectable": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "string"
     }
   }
 }

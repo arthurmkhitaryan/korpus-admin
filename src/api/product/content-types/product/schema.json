@@ -32,31 +32,11 @@
       },
       "type": "integer"
     },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "products"
-    },
     "sub_categories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::sub-category.sub-category"
-    },
-    "korpus_color": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::color.color"
-    },
-    "facade": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "facade-preferences.facade-preferences"
+      "target": "api::sub-category.sub-category",
+      "mappedBy": "product"
     },
     "image": {
       "type": "media",
@@ -70,6 +50,14 @@
           "localized": false
         }
       }
+    },
+    "currency": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

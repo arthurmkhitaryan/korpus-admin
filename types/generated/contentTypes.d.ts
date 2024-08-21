@@ -892,11 +892,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::sub-category.sub-category'
     >;
-    products: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -954,6 +949,128 @@ export interface ApiColorColor extends Schema.CollectionType {
   };
 }
 
+export interface ApiFacadeFacade extends Schema.CollectionType {
+  collectionName: 'facades';
+  info: {
+    singularName: 'facade';
+    pluralName: 'facades';
+    displayName: 'Facade';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    facade_materials: Attribute.Relation<
+      'api::facade.facade',
+      'oneToMany',
+      'api::facade-material.facade-material'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::facade.facade',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::facade.facade',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFacadeColorTypeFacadeColorType
+  extends Schema.CollectionType {
+  collectionName: 'facade_color_types';
+  info: {
+    singularName: 'facade-color-type';
+    pluralName: 'facade-color-types';
+    displayName: 'FacadeColorTypes';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    facade_material: Attribute.Relation<
+      'api::facade-color-type.facade-color-type',
+      'manyToOne',
+      'api::facade-material.facade-material'
+    >;
+    lacquerpercentages: Attribute.Component<
+      'lacquer-percentage.lacquer-percentage',
+      true
+    >;
+    facadeColors: Attribute.Component<'facade-color.facade-color', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::facade-color-type.facade-color-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::facade-color-type.facade-color-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFacadeMaterialFacadeMaterial extends Schema.CollectionType {
+  collectionName: 'facade_materials';
+  info: {
+    singularName: 'facade-material';
+    pluralName: 'facade-materials';
+    displayName: 'FacadeMaterial';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    facade: Attribute.Relation<
+      'api::facade-material.facade-material',
+      'manyToOne',
+      'api::facade.facade'
+    >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    facade_color_types: Attribute.Relation<
+      'api::facade-material.facade-material',
+      'oneToMany',
+      'api::facade-color-type.facade-color-type'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::facade-material.facade-material',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::facade-material.facade-material',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPreferencePreference extends Schema.CollectionType {
   collectionName: 'preferences';
   info: {
@@ -976,6 +1093,7 @@ export interface ApiPreferencePreference extends Schema.CollectionType {
       true
     >;
     name: Attribute.String;
+    type: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1023,32 +1141,22 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    categories: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::category.category'
-    >;
     sub_categories: Attribute.Relation<
       'api::product.product',
       'oneToMany',
       'api::sub-category.sub-category'
     >;
-    korpus_color: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'api::color.color'
-    >;
-    facade: Attribute.Component<'facade-preferences.facade-preferences'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
+        };
+      }>;
+    currency: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -1167,6 +1275,11 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
+    product: Attribute.Relation<
+      'api::sub-category.sub-category',
+      'manyToOne',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1212,6 +1325,9 @@ declare module '@strapi/types' {
       'api::about.about': ApiAboutAbout;
       'api::category.category': ApiCategoryCategory;
       'api::color.color': ApiColorColor;
+      'api::facade.facade': ApiFacadeFacade;
+      'api::facade-color-type.facade-color-type': ApiFacadeColorTypeFacadeColorType;
+      'api::facade-material.facade-material': ApiFacadeMaterialFacadeMaterial;
       'api::preference.preference': ApiPreferencePreference;
       'api::product.product': ApiProductProduct;
       'api::project.project': ApiProjectProject;

@@ -20,11 +20,7 @@ export interface PreferenceItemParamsPreferenceItemParams
     description: '';
   };
   attributes: {
-    name: Attribute.String;
-    IsSelectable: Attribute.Boolean & Attribute.Required;
-    isFixed: Attribute.Boolean & Attribute.Required;
     value: Attribute.String & Attribute.Required;
-    default: Attribute.String;
   };
 }
 
@@ -32,14 +28,20 @@ export interface PreferenceItemPreferenceItem extends Schema.Component {
   collectionName: 'components_preference_item_preference_items';
   info: {
     displayName: 'PreferenceItem';
+    description: '';
   };
   attributes: {
     name: Attribute.String;
-    type: Attribute.String;
+    default: Attribute.String;
     items: Attribute.Component<
       'preference-item-params.preference-item-params',
       true
     >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    editable: Attribute.Boolean;
+    isFixed: Attribute.Boolean;
+    selectable: Attribute.Boolean;
+    type: Attribute.String;
   };
 }
 
@@ -128,6 +130,28 @@ export interface AboutInfoInfoBlock extends Schema.Component {
   };
 }
 
+export interface FacadeColorFacadeColor extends Schema.Component {
+  collectionName: 'components_facade_color_facade_colors';
+  info: {
+    displayName: 'facade-color';
+  };
+  attributes: {
+    title: Attribute.String;
+    hex: Attribute.String;
+    colorCategory: Attribute.String;
+  };
+}
+
+export interface LacquerPercentageLacquerPercentage extends Schema.Component {
+  collectionName: 'components_lacquer_percentage_lacquer_percentages';
+  info: {
+    displayName: 'Lacquer-percentage';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -138,6 +162,8 @@ declare module '@strapi/types' {
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
       'about-questions.about-questions': AboutQuestionsAboutQuestions;
       'about-info.info-block': AboutInfoInfoBlock;
+      'facade-color.facade-color': FacadeColorFacadeColor;
+      'lacquer-percentage.lacquer-percentage': LacquerPercentageLacquerPercentage;
     }
   }
 }

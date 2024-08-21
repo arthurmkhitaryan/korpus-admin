@@ -56,6 +56,12 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "sub_categories"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "sub_categories"
     }
   }
 }

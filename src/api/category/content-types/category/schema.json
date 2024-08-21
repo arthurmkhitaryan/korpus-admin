@@ -54,12 +54,6 @@
       "relation": "oneToMany",
       "target": "api::sub-category.sub-category",
       "mappedBy": "category"
-    },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "categories"
     }
   }
 }
