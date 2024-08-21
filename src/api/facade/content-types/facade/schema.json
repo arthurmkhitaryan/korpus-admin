@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "facades",
+  "info": {
+    "singularName": "facade",
+    "pluralName": "facades",
+    "displayName": "Facade",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "facade_materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::facade-material.facade-material",
+      "mappedBy": "facade"
+    }
+  }
+}

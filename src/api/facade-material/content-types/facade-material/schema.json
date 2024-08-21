@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "facade_materials",
+  "info": {
+    "singularName": "facade-material",
+    "pluralName": "facade-materials",
+    "displayName": "FacadeMaterial",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "facade": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::facade.facade",
+      "inversedBy": "facade_materials"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "facade_color_types": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::facade-color-type.facade-color-type",
+      "mappedBy": "facade_material"
+    }
+  }
+}

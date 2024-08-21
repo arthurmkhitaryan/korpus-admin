@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "facade_color_types",
+  "info": {
+    "singularName": "facade-color-type",
+    "pluralName": "facade-color-types",
+    "displayName": "FacadeColorTypes",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "facade_material": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::facade-material.facade-material",
+      "inversedBy": "facade_color_types"
+    },
+    "lacquerpercentages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "lacquer-percentage.lacquer-percentage"
+    },
+    "facadeColors": {
+      "type": "component",
+      "repeatable": true,
+      "component": "facade-color.facade-color"
+    }
+  }
+}

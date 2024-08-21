@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_facade_color_facade_colors",
+  "info": {
+    "displayName": "facade-color"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "hex": {
+      "type": "string"
+    },
+    "colorCategory": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_lacquer_percentage_lacquer_percentages",
+  "info": {
+    "displayName": "Lacquer-percentage"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
