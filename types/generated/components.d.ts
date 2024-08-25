@@ -12,18 +12,6 @@ export interface QuestionQuestion extends Schema.Component {
   };
 }
 
-export interface PreferenceItemParamsPreferenceItemParams
-  extends Schema.Component {
-  collectionName: 'components_preference_item_params_preference_item_params';
-  info: {
-    displayName: 'PreferenceItemParams';
-    description: '';
-  };
-  attributes: {
-    value: Attribute.String & Attribute.Required;
-  };
-}
-
 export interface PreferenceItemPreferenceItem extends Schema.Component {
   collectionName: 'components_preference_item_preference_items';
   info: {
@@ -79,17 +67,15 @@ export interface FacadePreferencesFacadePreferences extends Schema.Component {
   };
 }
 
-export interface AboutQuestionsAboutQuestions extends Schema.Component {
-  collectionName: 'components_about_questions_about_questions';
+export interface PreferenceItemParamsPreferenceItemParams
+  extends Schema.Component {
+  collectionName: 'components_preference_item_params_preference_item_params';
   info: {
-    displayName: 'About-Questions';
+    displayName: 'PreferenceItemParams';
     description: '';
   };
   attributes: {
-    questions: Attribute.Component<'question.question', true>;
-    about_questions_image: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    value: Attribute.String & Attribute.Required;
   };
 }
 
@@ -130,6 +116,20 @@ export interface AboutInfoInfoBlock extends Schema.Component {
   };
 }
 
+export interface AboutQuestionsAboutQuestions extends Schema.Component {
+  collectionName: 'components_about_questions_about_questions';
+  info: {
+    displayName: 'About-Questions';
+    description: '';
+  };
+  attributes: {
+    questions: Attribute.Component<'question.question', true>;
+    about_questions_image: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+  };
+}
+
 export interface FacadeColorFacadeColor extends Schema.Component {
   collectionName: 'components_facade_color_facade_colors';
   info: {
@@ -156,12 +156,12 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'question.question': QuestionQuestion;
-      'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
       'preference-item.preference-item': PreferenceItemPreferenceItem;
       'learn-more-block.learn-more': LearnMoreBlockLearnMore;
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
-      'about-questions.about-questions': AboutQuestionsAboutQuestions;
+      'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
       'about-info.info-block': AboutInfoInfoBlock;
+      'about-questions.about-questions': AboutQuestionsAboutQuestions;
       'facade-color.facade-color': FacadeColorFacadeColor;
       'lacquer-percentage.lacquer-percentage': LacquerPercentageLacquerPercentage;
     }
