@@ -1141,11 +1141,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    sub_categories: Attribute.Relation<
-      'api::product.product',
-      'oneToMany',
-      'api::sub-category.sub-category'
-    >;
     image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1159,6 +1154,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    sub_categories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::sub-category.sub-category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1275,9 +1275,9 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
-    product: Attribute.Relation<
+    products: Attribute.Relation<
       'api::sub-category.sub-category',
-      'manyToOne',
+      'manyToMany',
       'api::product.product'
     >;
     createdAt: Attribute.DateTime;

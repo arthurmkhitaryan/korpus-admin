@@ -12,6 +12,18 @@ export interface QuestionQuestion extends Schema.Component {
   };
 }
 
+export interface PreferenceItemParamsPreferenceItemParams
+  extends Schema.Component {
+  collectionName: 'components_preference_item_params_preference_item_params';
+  info: {
+    displayName: 'PreferenceItemParams';
+    description: '';
+  };
+  attributes: {
+    value: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface PreferenceItemPreferenceItem extends Schema.Component {
   collectionName: 'components_preference_item_preference_items';
   info: {
@@ -67,15 +79,17 @@ export interface FacadePreferencesFacadePreferences extends Schema.Component {
   };
 }
 
-export interface PreferenceItemParamsPreferenceItemParams
-  extends Schema.Component {
-  collectionName: 'components_preference_item_params_preference_item_params';
+export interface AboutQuestionsAboutQuestions extends Schema.Component {
+  collectionName: 'components_about_questions_about_questions';
   info: {
-    displayName: 'PreferenceItemParams';
+    displayName: 'About-Questions';
     description: '';
   };
   attributes: {
-    value: Attribute.String & Attribute.Required;
+    questions: Attribute.Component<'question.question', true>;
+    about_questions_image: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
   };
 }
 
@@ -116,17 +130,13 @@ export interface AboutInfoInfoBlock extends Schema.Component {
   };
 }
 
-export interface AboutQuestionsAboutQuestions extends Schema.Component {
-  collectionName: 'components_about_questions_about_questions';
+export interface LacquerPercentageLacquerPercentage extends Schema.Component {
+  collectionName: 'components_lacquer_percentage_lacquer_percentages';
   info: {
-    displayName: 'About-Questions';
-    description: '';
+    displayName: 'Lacquer-percentage';
   };
   attributes: {
-    questions: Attribute.Component<'question.question', true>;
-    about_questions_image: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    title: Attribute.String;
   };
 }
 
@@ -142,28 +152,18 @@ export interface FacadeColorFacadeColor extends Schema.Component {
   };
 }
 
-export interface LacquerPercentageLacquerPercentage extends Schema.Component {
-  collectionName: 'components_lacquer_percentage_lacquer_percentages';
-  info: {
-    displayName: 'Lacquer-percentage';
-  };
-  attributes: {
-    title: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'question.question': QuestionQuestion;
+      'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
       'preference-item.preference-item': PreferenceItemPreferenceItem;
       'learn-more-block.learn-more': LearnMoreBlockLearnMore;
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
-      'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
-      'about-info.info-block': AboutInfoInfoBlock;
       'about-questions.about-questions': AboutQuestionsAboutQuestions;
-      'facade-color.facade-color': FacadeColorFacadeColor;
+      'about-info.info-block': AboutInfoInfoBlock;
       'lacquer-percentage.lacquer-percentage': LacquerPercentageLacquerPercentage;
+      'facade-color.facade-color': FacadeColorFacadeColor;
     }
   }
 }

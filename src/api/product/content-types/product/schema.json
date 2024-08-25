@@ -32,12 +32,6 @@
       },
       "type": "integer"
     },
-    "sub_categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::sub-category.sub-category",
-      "mappedBy": "product"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -58,6 +52,12 @@
         }
       },
       "type": "string"
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sub-category.sub-category",
+      "mappedBy": "products"
     }
   }
 }
