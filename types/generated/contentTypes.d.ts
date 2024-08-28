@@ -1159,6 +1159,43 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::sub-category.sub-category'
     >;
+    minHeight: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    maxHeight: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    korpus_colors: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::color.color'
+    >;
+    facade_color_types: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::facade-color-type.facade-color-type'
+    >;
+    lacquerPercentages: Attribute.Component<
+      'lacquer-percentage.lacquer-percentage',
+      true
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    facadeColor: Attribute.Component<'facade-color.facade-color', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -58,6 +58,52 @@
       "relation": "manyToMany",
       "target": "api::sub-category.sub-category",
       "mappedBy": "products"
+    },
+    "minHeight": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "maxHeight": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "korpus_colors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::color.color"
+    },
+    "facade_color_types": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::facade-color-type.facade-color-type"
+    },
+    "lacquerPercentages": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "lacquer-percentage.lacquer-percentage"
+    },
+    "facadeColor": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "facade-color.facade-color"
     }
   }
 }
