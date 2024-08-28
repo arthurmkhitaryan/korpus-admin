@@ -12,18 +12,6 @@ export interface QuestionQuestion extends Schema.Component {
   };
 }
 
-export interface PreferenceItemParamsPreferenceItemParams
-  extends Schema.Component {
-  collectionName: 'components_preference_item_params_preference_item_params';
-  info: {
-    displayName: 'PreferenceItemParams';
-    description: '';
-  };
-  attributes: {
-    value: Attribute.String & Attribute.Required;
-  };
-}
-
 export interface PreferenceItemPreferenceItem extends Schema.Component {
   collectionName: 'components_preference_item_preference_items';
   info: {
@@ -38,10 +26,9 @@ export interface PreferenceItemPreferenceItem extends Schema.Component {
       true
     >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    editable: Attribute.Boolean;
     isFixed: Attribute.Boolean;
-    selectable: Attribute.Boolean;
-    type: Attribute.String;
+    type: Attribute.Enumeration<['none', 'input', 'select', 'singleSelect']> &
+      Attribute.DefaultTo<'none'>;
   };
 }
 
@@ -54,6 +41,18 @@ export interface LearnMoreBlockLearnMore extends Schema.Component {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text & Attribute.Required;
     image: Attribute.Media<'images'> & Attribute.Required;
+  };
+}
+
+export interface PreferenceItemParamsPreferenceItemParams
+  extends Schema.Component {
+  collectionName: 'components_preference_item_params_preference_item_params';
+  info: {
+    displayName: 'PreferenceItemParams';
+    description: '';
+  };
+  attributes: {
+    value: Attribute.String & Attribute.Required;
   };
 }
 
@@ -156,9 +155,9 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'question.question': QuestionQuestion;
-      'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
       'preference-item.preference-item': PreferenceItemPreferenceItem;
       'learn-more-block.learn-more': LearnMoreBlockLearnMore;
+      'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
       'about-questions.about-questions': AboutQuestionsAboutQuestions;
       'about-info.info-block': AboutInfoInfoBlock;

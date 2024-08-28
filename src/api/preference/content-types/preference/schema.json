@@ -26,7 +26,10 @@
       "type": "string"
     },
     "type": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "grouped"
+      ]
     }
   }
 }

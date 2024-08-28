@@ -1093,7 +1093,7 @@ export interface ApiPreferencePreference extends Schema.CollectionType {
       true
     >;
     name: Attribute.String;
-    type: Attribute.String;
+    type: Attribute.Enumeration<['grouped']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

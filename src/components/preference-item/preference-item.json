@@ -29,17 +29,18 @@
         "audios"
       ]
     },
-    "editable": {
-      "type": "boolean"
-    },
     "isFixed": {
       "type": "boolean"
     },
-    "selectable": {
-      "type": "boolean"
-    },
     "type": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "input",
+        "select",
+        "singleSelect"
+      ],
+      "default": "none"
     }
   }
 }
