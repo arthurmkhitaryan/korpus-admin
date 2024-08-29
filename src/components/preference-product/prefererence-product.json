@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_preference_product_prefererence_products",
+  "info": {
+    "displayName": "prefererence-product",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "tablecloth": {
+      "type": "enumeration",
+      "enum": [
+        "size 20",
+        "size 28"
+      ]
+    },
+    "support": {
+      "type": "enumeration",
+      "enum": [
+        "size 20",
+        "size 30",
+        "size 100"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "size withoutHandle"
+      ]
+    }
+  }
+}

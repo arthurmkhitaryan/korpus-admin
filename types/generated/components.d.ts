@@ -12,6 +12,18 @@ export interface QuestionQuestion extends Schema.Component {
   };
 }
 
+export interface PreferenceItemParamsPreferenceItemParams
+  extends Schema.Component {
+  collectionName: 'components_preference_item_params_preference_item_params';
+  info: {
+    displayName: 'PreferenceItemParams';
+    description: '';
+  };
+  attributes: {
+    value: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface PreferenceItemPreferenceItem extends Schema.Component {
   collectionName: 'components_preference_item_preference_items';
   info: {
@@ -44,18 +56,6 @@ export interface LearnMoreBlockLearnMore extends Schema.Component {
   };
 }
 
-export interface PreferenceItemParamsPreferenceItemParams
-  extends Schema.Component {
-  collectionName: 'components_preference_item_params_preference_item_params';
-  info: {
-    displayName: 'PreferenceItemParams';
-    description: '';
-  };
-  attributes: {
-    value: Attribute.String & Attribute.Required;
-  };
-}
-
 export interface FacadePreferencesFacadePreferences extends Schema.Component {
   collectionName: 'components_facade_preferences_facade_preferences';
   info: {
@@ -75,6 +75,19 @@ export interface FacadePreferencesFacadePreferences extends Schema.Component {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Lam. Chipboard'>;
+  };
+}
+
+export interface PreferenceProductPrefererenceProduct extends Schema.Component {
+  collectionName: 'components_preference_product_prefererence_products';
+  info: {
+    displayName: 'prefererence-product';
+    description: '';
+  };
+  attributes: {
+    tablecloth: Attribute.Enumeration<['size 20', 'size 28']>;
+    support: Attribute.Enumeration<['size 20', 'size 30', 'size 100']>;
+    type: Attribute.Enumeration<['size withoutHandle']>;
   };
 }
 
@@ -155,10 +168,11 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'question.question': QuestionQuestion;
+      'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
       'preference-item.preference-item': PreferenceItemPreferenceItem;
       'learn-more-block.learn-more': LearnMoreBlockLearnMore;
-      'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
+      'preference-product.prefererence-product': PreferenceProductPrefererenceProduct;
       'about-questions.about-questions': AboutQuestionsAboutQuestions;
       'about-info.info-block': AboutInfoInfoBlock;
       'lacquer-percentage.lacquer-percentage': LacquerPercentageLacquerPercentage;

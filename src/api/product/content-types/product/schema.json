@@ -104,6 +104,16 @@
         }
       },
       "component": "facade-color.facade-color"
+    },
+    "preferenceProduct": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "preference-product.prefererence-product"
     }
   }
 }
