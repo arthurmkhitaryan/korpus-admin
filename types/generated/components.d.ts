@@ -12,6 +12,19 @@ export interface QuestionQuestion extends Schema.Component {
   };
 }
 
+export interface PreferenceProductPrefererenceProduct extends Schema.Component {
+  collectionName: 'components_preference_product_prefererence_products';
+  info: {
+    displayName: 'prefererence-product';
+    description: '';
+  };
+  attributes: {
+    tablecloth: Attribute.Enumeration<['size 20', 'size 28']>;
+    support: Attribute.Enumeration<['size 20', 'size 30', 'size 100']>;
+    type: Attribute.Enumeration<['size withoutHandle']>;
+  };
+}
+
 export interface PreferenceItemParamsPreferenceItemParams
   extends Schema.Component {
   collectionName: 'components_preference_item_params_preference_item_params';
@@ -75,19 +88,6 @@ export interface FacadePreferencesFacadePreferences extends Schema.Component {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Lam. Chipboard'>;
-  };
-}
-
-export interface PreferenceProductPrefererenceProduct extends Schema.Component {
-  collectionName: 'components_preference_product_prefererence_products';
-  info: {
-    displayName: 'prefererence-product';
-    description: '';
-  };
-  attributes: {
-    tablecloth: Attribute.Enumeration<['size 20', 'size 28']>;
-    support: Attribute.Enumeration<['size 20', 'size 30', 'size 100']>;
-    type: Attribute.Enumeration<['size withoutHandle']>;
   };
 }
 
@@ -168,11 +168,11 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'question.question': QuestionQuestion;
+      'preference-product.prefererence-product': PreferenceProductPrefererenceProduct;
       'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
       'preference-item.preference-item': PreferenceItemPreferenceItem;
       'learn-more-block.learn-more': LearnMoreBlockLearnMore;
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
-      'preference-product.prefererence-product': PreferenceProductPrefererenceProduct;
       'about-questions.about-questions': AboutQuestionsAboutQuestions;
       'about-info.info-block': AboutInfoInfoBlock;
       'lacquer-percentage.lacquer-percentage': LacquerPercentageLacquerPercentage;

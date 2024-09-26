@@ -881,10 +881,9 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
         };
       }>;
     img: Attribute.Media<'images'> &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     sub_categories: Attribute.Relation<
