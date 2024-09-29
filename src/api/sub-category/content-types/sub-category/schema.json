@@ -62,6 +62,22 @@
       "relation": "manyToMany",
       "target": "api::product.product",
       "inversedBy": "sub_categories"
+    },
+    "minHeight": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "maxHeight": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
     }
   }
 }

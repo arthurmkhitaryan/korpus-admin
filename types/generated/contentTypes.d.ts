@@ -1322,6 +1322,18 @@ export interface ApiSubCategorySubCategory extends Schema.CollectionType {
       'manyToMany',
       'api::product.product'
     >;
+    minHeight: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    maxHeight: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

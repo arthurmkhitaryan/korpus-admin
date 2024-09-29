@@ -38,7 +38,8 @@
         "none",
         "input",
         "select",
-        "singleSelect"
+        "singleSelect",
+        "range"
       ],
       "default": "none"
     }

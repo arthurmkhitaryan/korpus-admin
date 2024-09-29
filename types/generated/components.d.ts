@@ -12,19 +12,6 @@ export interface QuestionQuestion extends Schema.Component {
   };
 }
 
-export interface PreferenceProductPrefererenceProduct extends Schema.Component {
-  collectionName: 'components_preference_product_prefererence_products';
-  info: {
-    displayName: 'prefererence-product';
-    description: '';
-  };
-  attributes: {
-    tablecloth: Attribute.Enumeration<['size 20', 'size 28']>;
-    support: Attribute.Enumeration<['size 20', 'size 30', 'size 100']>;
-    type: Attribute.Enumeration<['size withoutHandle']>;
-  };
-}
-
 export interface PreferenceItemParamsPreferenceItemParams
   extends Schema.Component {
   collectionName: 'components_preference_item_params_preference_item_params';
@@ -52,7 +39,9 @@ export interface PreferenceItemPreferenceItem extends Schema.Component {
     >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     isFixed: Attribute.Boolean;
-    type: Attribute.Enumeration<['none', 'input', 'select', 'singleSelect']> &
+    type: Attribute.Enumeration<
+      ['none', 'input', 'select', 'singleSelect', 'range']
+    > &
       Attribute.DefaultTo<'none'>;
   };
 }
@@ -88,6 +77,28 @@ export interface FacadePreferencesFacadePreferences extends Schema.Component {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Lam. Chipboard'>;
+  };
+}
+
+export interface LacquerPercentageLacquerPercentage extends Schema.Component {
+  collectionName: 'components_lacquer_percentage_lacquer_percentages';
+  info: {
+    displayName: 'Lacquer-percentage';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
+export interface FacadeColorFacadeColor extends Schema.Component {
+  collectionName: 'components_facade_color_facade_colors';
+  info: {
+    displayName: 'facade-color';
+  };
+  attributes: {
+    title: Attribute.String;
+    hex: Attribute.String;
+    colorCategory: Attribute.String;
   };
 }
 
@@ -142,25 +153,16 @@ export interface AboutInfoInfoBlock extends Schema.Component {
   };
 }
 
-export interface LacquerPercentageLacquerPercentage extends Schema.Component {
-  collectionName: 'components_lacquer_percentage_lacquer_percentages';
+export interface PreferenceProductPrefererenceProduct extends Schema.Component {
+  collectionName: 'components_preference_product_prefererence_products';
   info: {
-    displayName: 'Lacquer-percentage';
+    displayName: 'prefererence-product';
+    description: '';
   };
   attributes: {
-    title: Attribute.String;
-  };
-}
-
-export interface FacadeColorFacadeColor extends Schema.Component {
-  collectionName: 'components_facade_color_facade_colors';
-  info: {
-    displayName: 'facade-color';
-  };
-  attributes: {
-    title: Attribute.String;
-    hex: Attribute.String;
-    colorCategory: Attribute.String;
+    tablecloth: Attribute.Enumeration<['size 20', 'size 28']>;
+    support: Attribute.Enumeration<['size 20', 'size 30', 'size 100']>;
+    type: Attribute.Enumeration<['size withoutHandle']>;
   };
 }
 
@@ -168,15 +170,15 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'question.question': QuestionQuestion;
-      'preference-product.prefererence-product': PreferenceProductPrefererenceProduct;
       'preference-item-params.preference-item-params': PreferenceItemParamsPreferenceItemParams;
       'preference-item.preference-item': PreferenceItemPreferenceItem;
       'learn-more-block.learn-more': LearnMoreBlockLearnMore;
       'facade-preferences.facade-preferences': FacadePreferencesFacadePreferences;
-      'about-questions.about-questions': AboutQuestionsAboutQuestions;
-      'about-info.info-block': AboutInfoInfoBlock;
       'lacquer-percentage.lacquer-percentage': LacquerPercentageLacquerPercentage;
       'facade-color.facade-color': FacadeColorFacadeColor;
+      'about-questions.about-questions': AboutQuestionsAboutQuestions;
+      'about-info.info-block': AboutInfoInfoBlock;
+      'preference-product.prefererence-product': PreferenceProductPrefererenceProduct;
     }
   }
 }
